@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/15 12:05:56 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 13:52:15 by sbudding         ###   ########.fr       */
+/*   Created: 2020/11/15 13:21:51 by sbudding          #+#    #+#             */
+/*   Updated: 2020/11/15 13:52:00 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <stdarg.h>
-#include "../includes/ft_parser.h"
+#include "libft/libft.h"
+#include <stdio.h>
+#include "includes/ft_printf.h"
 
-int				ft_printf(const char *fmt, ...);
+int main (void)
+{
+	ft_printf("%d %d 123 %d", -4221, 2, 1);
+	printf("%d %d 123 %d", -4221, 2, 1);
+}

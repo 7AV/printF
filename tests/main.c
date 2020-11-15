@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 11:06:59 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:04:21 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 12:43:42 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ int				ft_printf(const char *fmt, ...)		// printf("%d, %u, %x, %c, %s, %p", d&i,
 
 int			main(void)
 {
-	printf(" -- %d", ft_printf("%d%d 123 %d", 4221, 2, 1));
+	printf(" -- %d", ft_printf("%d %d 123 %d", -4221, 2, 1));
 	printf("\n");
-	printf(" -- %d", printf("%d%d 123 %d", 4221, 2, 1));
+	printf(" -- %d", printf("%0-d %d 123 %d", -4221, 2, 1));
 	printf("\n");
 	// printf("%s", ft_itoa(4221));
 }

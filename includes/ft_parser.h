@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:06:02 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:07:43 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 13:04:48 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@ typedef struct	s_node
 	int			flags;
 	int			width;
 	int			precision;
-	char		type;
+	int			type;
 	int			lenght;
 }				t_save;

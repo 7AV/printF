@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 11:06:59 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 11:09:04 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 12:04:21 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,17 @@ int				ft_type_parse(char *line, char *type)
 	return (type_len);
 }
 
-int				ft_cleandata(t_save *data)
+int				ft_clean_data(t_save *data)
 {
 	data->flags = 0;
 	data->width = 0;
 	data->precision = 0;
 	data->type = '0';
 	data->lenght = 0;
+	return (0);
 }
 
-int				ft_parser(char *line, va_list ap)	//возврат длинны %...type
+int				ft_parser(char *line, int *ptr, va_list ap)	//возврат длинны %...type
 {
 	t_save		*data;
 	char		*tmp;
@@ -74,7 +75,7 @@ int				ft_parser(char *line, va_list ap)	//возврат длинны %...type
 	// line_len += ft_precision_parse(*line, &data->precision);
 	line_len += ft_type_parse(line, &data->type);
 
-	ft_processor(data, ap);
+	*ptr += ft_processor(data, ap);
 	ft_clean_data(data);
 	return (line_len);
 }
@@ -100,7 +101,7 @@ int				ft_printf(const char *fmt, ...)		// printf("%d, %u, %x, %c, %s, %p", d&i,
 				return (output_len);
 			}
 		}
-		line += ft_parser(line, ap);
+		line += ft_parser(line, &output_len, ap);
 	 }
 	va_end(ap);
 	return (output_len);
@@ -108,9 +109,9 @@ int				ft_printf(const char *fmt, ...)		// printf("%d, %u, %x, %c, %s, %p", d&i,
 
 int			main(void)
 {
-	ft_printf("%d%d 123 %d", 4221, 2, 1);
+	printf(" -- %d", ft_printf("%d%d 123 %d", 4221, 2, 1));
 	printf("\n");
-	printf("%d%d 123 %d", 4221, 2, 1);
+	printf(" -- %d", printf("%d%d 123 %d", 4221, 2, 1));
 	printf("\n");
 	// printf("%s", ft_itoa(4221));
 }

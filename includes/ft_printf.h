@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:05:56 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 15:10:50 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 15:59:03 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_PRINTF_H
 
 #include "../libft/libft.h"
-#include "../includes/ft_parser.h"
-#include "../includes/ft_processor.h"
+// #include "../includes/ft_parser.h"
+// #include "../includes/ft_processor.h"
 #include <stdarg.h>
 
 typedef struct	s_node

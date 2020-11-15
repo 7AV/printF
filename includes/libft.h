@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 11:18:50 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:13:31 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 16:23:33 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+   #include <stdio.h>
 
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_bzero(void *s, size_t n);

@@ -6,16 +6,16 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:21:51 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 13:52:00 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 16:29:19 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdio.h>
 #include "includes/ft_printf.h"
+#include <stdio.h>
 
 int main (void)
 {
 	ft_printf("%d %d 123 %d", -4221, 2, 1);
+	printf("\n");
 	printf("%d %d 123 %d", -4221, 2, 1);
 }

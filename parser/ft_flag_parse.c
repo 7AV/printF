@@ -6,12 +6,11 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:39:27 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 13:21:04 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 15:05:14 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
+#include "../includes/ft_printf.h"
 
 static int		ft_isdig(int a)
 {
@@ -20,7 +19,7 @@ static int		ft_isdig(int a)
 	return (0);
 }
 
-int				ft_flag_parse(char *line, char *flags)
+int				ft_flag_parse(char *line, int *flags)
 {
 	int			flag_len;
 	int			check;
@@ -39,6 +38,6 @@ int				ft_flag_parse(char *line, char *flags)
 			*flags = 1;
 		flag_len++;
 	}
-	printf(" -%d- ", flag_len);
+	// printf(" -%d- ", flag_len);
 	return (flag_len);
 }

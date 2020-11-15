@@ -6,12 +6,11 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 10:45:04 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:30:43 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 14:52:05 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
+#include "../includes/ft_printf.h"
 
 // printf("%d, %u, %x, %c, %s, %p", d&i, u, xX, chr, *str, *ptr);
 

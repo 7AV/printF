@@ -6,14 +6,13 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:02:57 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:03:20 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 15:10:58 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <stdarg.h>
+#include "../includes/ft_printf.h"
 
-int				ft_type_parse(char *line, char *type)
+int				ft_type_parse(char *line, int *type)
 {
 	int			type_len;
 

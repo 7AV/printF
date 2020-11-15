@@ -6,13 +6,11 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:03:42 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:08:27 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 14:58:40 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../includes/ft_parser.h"
-#include <stdarg.h>
+#include "../includes/ft_printf.h"
 
 int				ft_processor(t_save *data, va_list ap)
 {

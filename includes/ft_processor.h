@@ -6,7 +6,13 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:05:59 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 12:06:00 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 15:02:48 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_PROCESSOR_H
+# define FT_PROCESSOR_H
+
+#include "ft_printf.h"
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:39:27 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 15:58:27 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 17:54:52 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int				ft_flag_parse(char *line, int *flags)
 		if ((*line == '0') && (!check))
 			*flags = 1;
 		flag_len++;
+		line++;
 	}
-	// printf(" -%d- ", flag_len);
+	printf(" -%d- ", flag_len);
 	return (flag_len);
 }

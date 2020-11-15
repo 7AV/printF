@@ -6,13 +6,13 @@
 #    By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 13:57:34 by sbudding          #+#    #+#              #
-#    Updated: 2020/11/15 16:31:11 by sbudding         ###   ########.fr        #
+#    Updated: 2020/11/15 17:57:28 by sbudding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c -g
 SRC = base/ft_printf.c \
 	parser/ft_parser.c \
 	parser/ft_flag_parse.c \

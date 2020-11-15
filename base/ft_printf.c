@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 10:45:04 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 14:52:05 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/15 17:26:01 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int				ft_printf(const char *fmt, ...)
 	{
 		while ((*line != '%'))
 		{
-			ft_putchar_fd(*line++, 1);
+			ft_putchar_fd(*line, 1);
+			line++;
 			output_len++;
 			if (!*line)
 			{

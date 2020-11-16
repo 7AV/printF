@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 18:43:49 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 15:19:18 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/16 21:41:54 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static int		ft_is_star(char **line, int *width_len, int *width, va_list ap)
 {
-	if (((*line)[0] == '*') && ((*line)[1] == '.'))
+	if ((*line)[0] == '*')
 	{
 		*width = va_arg(ap, int);
-		*width_len += 2;
-		*line += 2;
-		printf(" +%d+ ", *width);
+		*width_len += 1;
+		*line += 1;
+		printf(" -%d- ", *width);
 		return (1);
 	}
 	return (0);

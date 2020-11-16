@@ -6,17 +6,17 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 14:39:33 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 14:47:13 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/16 14:58:10 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				ft_is_comstar(char **line, int *prc_len, int *prc)
+static int		ft_is_comstar(char **line, int *prc_len, int *prc, va_list ap)
 {
 	if ((*line)[0] == '*')
 	{
-		*prc = '*';
+		*prc = va_arg(ap, int);
 		*prc_len += 1;
 		*line += 1;
 		printf(" +%d+ ", *prc);
@@ -25,7 +25,7 @@ int				ft_is_comstar(char **line, int *prc_len, int *prc)
 	return (0);
 }
 
-int				ft_precision_parse(char *line, int *prc, int *ptr)
+int				ft_precision_parse(char *line, int *prc, int *ptr, va_list ap)
 {
 	int			prc_len;
 	int			check;
@@ -33,7 +33,7 @@ int				ft_precision_parse(char *line, int *prc, int *ptr)
 
 	prc_len = 0;
 	check = 0;
-	if (ft_is_comstar(&line, &prc_len, prc))
+	if (ft_is_comstar(&line, &prc_len, prc, ap))
 		return (prc_len);
 	tmp = ft_strdup(line);
 	while (ft_isdigit(*line))

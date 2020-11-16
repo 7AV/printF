@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 11:18:50 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/15 16:23:33 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/16 19:21:25 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *str, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+
+void			ft_puthex_fd(unsigned int num, int fd);
 
 typedef struct		s_list
 {

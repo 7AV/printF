@@ -1,32 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_parse.c                                    :+:      :+:    :+:   */
+/*   ft_xX_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/15 12:02:57 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 15:33:36 by sbudding         ###   ########.fr       */
+/*   Created: 2020/11/16 16:07:48 by sbudding          #+#    #+#             */
+/*   Updated: 2020/11/16 16:13:57 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				ft_type_parse(char *line, int *type)
-{
-	if ((*line == 'd') || (*line == 'i'))
-		*type = 1;
-	else if (*line == 'u')
-		*type = 2;
-	else if (*line == 'x')
-		*type = 3;
-	else if (*line == 'X')
-		*type = 4;
-	else if (*line == 'c')
-		*type = 5;
-	else if (*line == 's')
-		*type = 6;
-	else if (*line == 'p')
-		*type = 7;	
-	return (1);
-}
+int				ft_xX_type(t_save *data, va_list ap);

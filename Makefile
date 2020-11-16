@@ -6,7 +6,7 @@
 #    By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 13:57:34 by sbudding          #+#    #+#              #
-#    Updated: 2020/11/15 17:57:28 by sbudding         ###   ########.fr        #
+#    Updated: 2020/11/16 16:19:35 by sbudding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,14 @@ SRC = base/ft_printf.c \
 	parser/ft_width_parse.c \
 	parser/ft_precision_parse.c \
 	parser/ft_type_parse.c \
-	processor/ft_processor.c
+	processor/ft_processor.c \
+	processor/ft_c_type.c \
+	processor/ft_di_type.c \
+	processor/ft_p_type.c \
+	processor/ft_s_type.c \
+	processor/ft_u_type.c \
+	processor/ft_x_type.c \
+	processor/ft_xX_type.c
 
 GRBG = ft_flag_parse.o \
 		ft_parser.o \
@@ -27,7 +34,14 @@ GRBG = ft_flag_parse.o \
 		ft_printf.o \
 		ft_processor.o \
 		ft_type_parse.o \
-		ft_width_parse.o
+		ft_width_parse.o \
+		ft_c_type.o \
+		ft_di_type.o \
+		ft_p_type.o \
+		ft_s_type.o \
+		ft_u_type.o \
+		ft_x_type.o \
+		ft_xX_type.o
 
 INCLUDES = -I./includes
 
@@ -49,6 +63,7 @@ clean:
 fclean: clean
 		$(MAKE) fclean -C ./libft
 		rm -rf $(NAME)
+		rm -rf a.out
 
 re: fclean all
 

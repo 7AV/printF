@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 14:39:33 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 21:50:30 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 11:02:59 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@ static int		ft_is_comstar(char **line, int *prc_len, int *prc, va_list ap)
 		*prc = va_arg(ap, int);
 		*prc_len += 2;
 		*line += 2;
-		printf(" +%d+ ", *prc);
 		return (1);
+	}
+	if (((*line)[0] == '.') && ((*line)[1] != '*'))
+	{
+		*prc_len += 1;
+		*line += 1;
+		return (0);
 	}
 	if ((*line)[0] == '*')
 	{
 		*prc = va_arg(ap, int);
 		*prc_len += 1;
 		*line += 1;
-		printf(" +%d+ ", *prc);
 		return (1);
 	}
 	return (0);
@@ -52,12 +56,6 @@ int				ft_precision_parse(char *line, int *prc, int *ptr, va_list ap)
 	}
 	tmp[prc_len] = '\0';
 	*prc = ft_atoi(tmp);
-	// if (*line == '.')
-		
-
-	
-	// printf(" +%d+ ", *prc);
-	// printf(" -%d- ", prc_len);
 	free(tmp);
 	return (prc_len);
 }

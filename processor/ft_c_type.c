@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:06:41 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 17:13:57 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 10:42:26 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,23 @@
 int				ft_c_type(t_save *data, va_list ap)
 {
 	char		output;
-	int	i;
-	i=data->type;
+	int			i;
 
 	output = va_arg(ap, int);
-	ft_putchar_fd(output, 1);
-	return(1);
+	i = 1;
+	if (data->width != 0)
+	{
+		if (data->flags == 2)
+			ft_putchar_fd(output, 1);
+		while (data->width > i)
+		{
+			ft_putchar_fd(' ', 1);
+			i++;
+		}
+		if (data->flags != 2)
+			ft_putchar_fd(output, 1);
+	}
+	else
+		ft_putchar_fd(output, 1);
+	return(i);
 }

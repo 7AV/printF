@@ -6,22 +6,21 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:05 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 20:31:02 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 12:09:23 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_put_hex_with_count(long long num, int *count)
+static void		ft_put_pointer(long long num)
 {
 	if (num >= 16)
 	{
-		ft_put_hex_with_count(num / 16, count);
+		ft_put_pointer(num / 16);
 		if ((num % 16) < 10)
 			ft_putchar_fd(num % 16 + '0', 1);
 		else
 			ft_putchar_fd(num % 16 + 'W', 1);
-		*count += 1;
 	}
 	else
 	{
@@ -29,18 +28,50 @@ static void		ft_put_hex_with_count(long long num, int *count)
 			ft_putchar_fd(num + '0', 1);
 		else
 			ft_putchar_fd(num + 'W', 1);
-		*count += 1;
 	}
 }
 
+// int				ft_p_type(t_save *data, va_list ap)
+// {
+// 	int	i;
+// 	i=data->type;
+// 	int count;
+	
+// 	count = 0;
+// 	ft_putstr_fd("0x", 1);
+// 	ft_put_hex_with_count(va_arg(ap, long long), &count);
+// 	return (count + 2);
+// }
+
 int				ft_p_type(t_save *data, va_list ap)
 {
-	int	i;
-	i=data->type;
-	int count;
+	long long	ptr;
+	int			len;
+	int			space_count;
 	
-	count = 0;
-	ft_putstr_fd("0x", 1);
-	ft_put_hex_with_count(va_arg(ap, long long), &count);
-	return (count + 2);
+	len = 0;
+	ptr = va_arg(ap, long long);
+	space_count = 11;
+	if (data->width != 0)
+	{
+		if (data->flags == 2)
+		{
+			ft_putstr_fd("0x", 1);
+			ft_put_pointer(ptr);
+		}
+		while (data->width > space_count)
+		{
+			ft_putchar_fd(' ', 1);
+			space_count++;
+			len++;
+		}
+		if (data->flags != 2)
+		{
+			ft_putstr_fd("0x", 1);
+			ft_put_pointer(ptr);
+		}
+	}
+	else
+		ft_put_pointer(ptr);
+	return(len + 11);
 }

@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:03:42 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 20:32:12 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 12:10:24 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int				ft_processor(t_save *data, va_list ap)
 	else if (data->type == 4)
 		len = ft_xX_type(data, ap);	//+
 	else if (data->type == 5)
-		len = ft_c_type(data, ap);	//+
+		len = ft_c_type(data, ap);	//+ +
 	else if (data->type == 6)
-		len = ft_s_type(data, ap);	//+
+		len = ft_s_type(data, ap);	//+ +
 	else if (data->type == 7)
-		len = ft_p_type(data, ap);	//+
+		len = ft_p_type(data, ap);	//+ +
 	return (len);
 }

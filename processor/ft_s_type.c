@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:16 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:17:13 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 21:01:52 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,23 @@ static int		ft_space_count(char *str, int len)
 static int		ft_put_s_with_prc(char *str, int len)
 {
 	int			i;
+	int			str_len;
 
+	str_len = ft_strlen(str);
 	i = 0;
 	if (len != 0)
-		while (len > i)
+		while ((i < len) && (i < str_len))
 		{
 			ft_putchar_fd(str[i], 1);
 			i++;
 		}
 	if (len == 0)
 	{
-		ft_putstr_fd(str, 1);
+		while (str[i])
+		{
+			ft_putchar_fd(str[i], 1);
+			i++;
+		}
 		i = ft_strlen(str);
 	}
 	return (i);

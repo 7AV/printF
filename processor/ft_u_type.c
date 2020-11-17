@@ -6,13 +6,13 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:29 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 14:46:41 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 15:15:41 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_putnbr_longlong(long long num)
+static void		ft_putnbr_longlong(long long num)
 {
 	if (num >= 10)
 	{
@@ -59,7 +59,7 @@ int				ft_u_type(t_save *data, va_list ap)
 	{
 		if (data->flags == 2)
 			ft_puwp(data, uns, uns_len, &len);
-		while (data->width > data->precision)
+		while ((data->width > data->precision) && (data->width > uns_len))
 		{
 			ft_putchar_fd(' ', 1);
 			data->width -= 1;

@@ -6,22 +6,34 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:48 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 19:42:49 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 14:29:18 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_put_hex_with_count(unsigned int num, int *count)
+#include "../includes/ft_printf.h"
+
+static void		ft_hex_count(unsigned int num, int *count)
 {
 	if (num >= 16)
 	{
-		ft_put_hex_with_count(num / 16, count);
+		ft_hex_count(num / 16, count);
+		*count += 1;
+	}
+	else
+		*count += 1;
+}
+
+static void		ft_put_hex(unsigned int num)
+{
+	if (num >= 16)
+	{
+		ft_put_hex(num / 16);
 		if ((num % 16) < 10)
 			ft_putchar_fd(num % 16 + '0', 1);
 		else
 			ft_putchar_fd(num % 16 + '7', 1);
-		*count += 1;
 	}
 	else
 	{
@@ -29,17 +41,44 @@ static void		ft_put_hex_with_count(unsigned int num, int *count)
 			ft_putchar_fd(num + '0', 1);
 		else
 			ft_putchar_fd(num + '7', 1);
-		*count += 1;
 	}
+}
+
+static void		ft_phwp(t_save *data, long long hex, int hex_len, int *len)
+{
+	while (data->precision > hex_len)
+	{
+		ft_putchar_fd('0', 1);
+		hex_len++;		
+		*len += 1;
+	}
+	ft_put_hex(hex);
 }
 
 int				ft_xX_type(t_save *data, va_list ap)
 {
-	int			count;
-	int	i;
-	i=data->type;
-	
-	count = 0;
-	ft_put_hex_with_count(va_arg(ap, unsigned int), &count);
-	return (count);
+	long long	hex;
+	int			hex_len;
+	int			len;
+
+	hex_len = 0;
+	hex = va_arg(ap, long long);
+	ft_hex_count(hex, &hex_len);
+	len = hex_len;
+	if (data->width != 0)
+	{
+		if (data->flags == 2)
+			ft_phwp(data, hex, hex_len, &len);
+		while (data->width > data->precision)
+		{
+			ft_putchar_fd(' ', 1);
+			data->width -= 1;
+			len++;
+		}
+		if (data->flags != 2)
+			ft_phwp(data, hex, hex_len, &len);
+	}
+	else
+		ft_phwp(data, hex, hex_len, &len);
+	return(len);
 }

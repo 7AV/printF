@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:39 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 14:24:46 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:14:54 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		ft_phwp(t_save *data, long long hex, int hex_len, int *len)
 	while (data->precision > hex_len)
 	{
 		ft_putchar_fd('0', 1);
-		hex_len++;		
+		hex_len++;
 		*len += 1;
 	}
 	ft_put_hex(hex);
@@ -78,5 +78,5 @@ int				ft_x_type(t_save *data, va_list ap)
 	}
 	else
 		ft_phwp(data, hex, hex_len, &len);
-	return(len);
+	return (len);
 }

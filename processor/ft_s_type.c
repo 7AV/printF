@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:16 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 11:37:33 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:17:13 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				ft_s_type(t_save *data, va_list ap)
 	char		*output;
 	int			len;
 	int			space_count;
-	
+
 	len = 0;
 	output = va_arg(ap, char*);
 	space_count = ft_space_count(output, data->precision);
@@ -68,5 +68,5 @@ int				ft_s_type(t_save *data, va_list ap)
 	}
 	else
 		len += ft_put_s_with_prc(output, data->precision);
-	return(len);
+	return (len);
 }

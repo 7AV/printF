@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:29:32 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 15:32:41 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 18:41:32 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int				ft_parser(char *line, int *ptr, va_list ap)
 	
 	tmp = line;
 	line_len = 1;
-	data = (t_save *)malloc(sizeof(t_save));
-	line_len += ft_flag_parse(line + 1, &(data->flags), ptr);				// -0
-	line_len += ft_width_parse(line + line_len, &(data->width), ptr, ap);		// *.
-	line_len += ft_precision_parse(line + line_len, &(data->precision), ptr, ap);			// .*
-	line_len += ft_type_parse(line + line_len, &(data->type));				// d&i, u, xX, chr, *str, *ptr
-
+	if (!(data = (t_save *)malloc(sizeof(t_save))))
+		return(-1);
+	line_len += ft_flag_parse(line + 1, &(data->flags), ptr);
+	line_len += ft_width_parse(line + line_len, &(data->width), ptr, ap);
+	line_len += ft_precision_parse(line + line_len, &(data->precision), ptr, ap);
+	line_len += ft_type_parse(line + line_len, &(data->type));
 	*ptr += ft_processor(data, ap);
 	free(data);
 	return (line_len);

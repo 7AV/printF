@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:05 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 12:11:09 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:26:29 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,32 @@ static void		ft_put_pointer(long long num)
 	}
 }
 
+static void		ft_put_full_pointer(long long ptr)
+{
+	ft_putstr_fd("0x", 1);
+	ft_put_pointer(ptr);
+}
+
 int				ft_p_type(t_save *data, va_list ap)
 {
 	long long	ptr;
-	int			len;
 	int			space_count;
-	
-	len = 0;
+
 	ptr = va_arg(ap, long long);
 	space_count = 11;
 	if (data->width != 0)
 	{
 		if (data->flags == 2)
-		{
-			ft_putstr_fd("0x", 1);
-			ft_put_pointer(ptr);
-		}
+			ft_put_full_pointer(ptr);
 		while (data->width > space_count)
 		{
 			ft_putchar_fd(' ', 1);
 			space_count++;
-			len++;
 		}
 		if (data->flags != 2)
-		{
-			ft_putstr_fd("0x", 1);
-			ft_put_pointer(ptr);
-		}
+			ft_put_full_pointer(ptr);
 	}
 	else
-		ft_put_pointer(ptr);
-	return(len + 11);
+		ft_put_full_pointer(ptr);
+	return (space_count);
 }

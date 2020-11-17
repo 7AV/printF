@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:29 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 15:15:41 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:17:08 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		ft_puwp(t_save *data, long long uns, int uns_len, int *len)
 	while (data->precision > uns_len)
 	{
 		ft_putchar_fd('0', 1);
-		uns_len++;		
+		uns_len++;
 		*len += 1;
 	}
 	ft_putnbr_longlong(uns);
@@ -70,5 +70,5 @@ int				ft_u_type(t_save *data, va_list ap)
 	}
 	else
 		ft_puwp(data, uns, uns_len, &len);
-	return(len);
+	return (len);
 }

@@ -6,7 +6,7 @@
 #    By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 13:57:34 by sbudding          #+#    #+#              #
-#    Updated: 2020/11/16 16:19:35 by sbudding         ###   ########.fr        #
+#    Updated: 2020/11/17 19:27:32 by sbudding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = base/ft_printf.c \
 	processor/ft_s_type.c \
 	processor/ft_u_type.c \
 	processor/ft_x_type.c \
-	processor/ft_xX_type.c
+	processor/ft_ux_type.c
 
 GRBG = ft_flag_parse.o \
 		ft_parser.o \
@@ -41,7 +41,7 @@ GRBG = ft_flag_parse.o \
 		ft_s_type.o \
 		ft_u_type.o \
 		ft_x_type.o \
-		ft_xX_type.o
+		ft_ux_type.o
 
 INCLUDES = -I./includes
 

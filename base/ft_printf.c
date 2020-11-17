@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 10:45:04 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 16:06:18 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:08:48 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ int				ft_printf(const char *fmt, ...)
 	char		*line;
 	int			output_len;
 	char		*tmp;
+	int			len;
 
 	output_len = 0;
 	va_start(ap, fmt);
-	line = ft_strdup(fmt);
+	if (!(line = ft_strdup(fmt)))
+		return (-1);
 	tmp = line;
 	while (*line)
 	{
@@ -43,9 +45,15 @@ int				ft_printf(const char *fmt, ...)
 			va_end(ap);
 			return (output_len);
 		}
-		line += ft_parser(line, &output_len, ap);
+		if ((len = ft_parser(line, &output_len, ap)) == -1)
+		{
+			va_end(ap);
+			return (-1);
+			// break ;
+		}
+		line += len;
 	}
 	va_end(ap);
-	free (tmp);
+	free(tmp);
 	return (output_len);
 }

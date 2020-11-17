@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:12:30 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 18:22:07 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:14:38 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ int				ft_di_type(t_save *data, va_list ap)
 	}
 	else
 		ft_pnwp(data, num, num_len, &len);
-	return(len);
+	return (len);
 }

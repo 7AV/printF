@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 11:18:50 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 19:21:25 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:32:11 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-   #include <stdio.h>
 
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_bzero(void *s, size_t n);
@@ -56,7 +54,7 @@ void				ft_putstr_fd(char *str, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-void			ft_puthex_fd(unsigned int num, int fd);
+void				ft_puthex_fd(unsigned int num, int fd);
 
 typedef struct		s_list
 {

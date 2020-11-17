@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:02:57 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/16 15:33:36 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:29:36 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int				ft_type_parse(char *line, int *type)
 	else if (*line == 's')
 		*type = 6;
 	else if (*line == 'p')
-		*type = 7;	
+		*type = 7;
 	return (1);
 }

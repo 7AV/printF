@@ -6,17 +6,15 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:05:56 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:18:13 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/17 19:32:45 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "../libft/libft.h"
-// #include "../includes/ft_parser.h"
-// #include "../includes/ft_processor.h"
-#include <stdarg.h>
+# include "../libft/libft.h"
+# include <stdarg.h>
 
 typedef struct	s_node
 {

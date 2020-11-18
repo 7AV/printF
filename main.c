@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:21:51 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 17:38:54 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:18:06 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main (void)
 		a = &b;
 		// ft_puthex_fd(123456789, 1);
 	// printf("%d", ft_printf("%*.d 123 %d %d",2, -4221, 2, 1));
-	printf(" (%d)", ft_printf("%07i", -54));
-	printf("\n");
+	printf(" (%d)", ft_printf("%5.0d", 0));
+	// printf("\n");
 	// printf("%d", printf("%.*d 123 %d %d",2,  -4221, 2, 1));
-	printf(" (%d)", printf("%07i", -54));
+	// printf(" (%d)", printf("%5.000d", 0));
 }

@@ -6,34 +6,47 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:12:30 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 17:44:04 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:13:34 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_putnbr(int num)
+static void		ft_putnbr(int num, int dota)
 {
+	if ((num == 0) && (dota))
+		return ;
 	if (num >= 10)
 	{
-		ft_putnbr(num / 10);
+		ft_putnbr(num / 10, dota);
 		ft_putchar_fd(num % 10 + '0', 1);
 	}
 	else
 		ft_putchar_fd(num + '0', 1);
 }
 
-static void		ft_num_count(int num, int *count)
+static void		ft_num_count(int num, int *count, int dota)
 {
-	if (num < 0)
-		ft_num_count(-num, count);
-	if (num >= 10)
+	if ((num == 0) && (dota))
 	{
-		ft_num_count(num / 10, count);
+		*count = 0;
+		return ;
+	}
+	if (num == 0)
+	{
+		*count = 1;
+		return ;
+	}
+	if (num < 0)
+		*count += 1;
+	while (num / 10)
+	{
+		num = num / 10;
 		*count += 1;
 	}
-	else
+	if (num % 10)
 		*count += 1;
+	return ;
 }
 
 static void		ft_pnwp(t_save *data, int num, int num_len, int *len)
@@ -54,7 +67,7 @@ static void		ft_pnwp(t_save *data, int num, int num_len, int *len)
 		ft_putchar_fd('-', 1);
 		num = -num;
 	}
-	ft_putnbr(num);
+	ft_putnbr(num, data->dota);
 }
 
 static void		ft_negative_num(long long *num, int num_len, t_save *data)
@@ -77,7 +90,7 @@ int				ft_di_type(t_save *data, va_list ap)
 
 	num_len = 0;
 	num = va_arg(ap, int);
-	ft_num_count(num, &num_len);
+	ft_num_count(num, &num_len, data->dota);
 	ft_negative_num(&num, num_len, data);
 	len = num_len;
 	if (data->width != 0)

@@ -6,28 +6,43 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:48 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 17:03:18 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:13:10 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_hex_count(unsigned int num, int *count)
+static void		ft_hex_count(unsigned int num, int *count, int dota)
 {
-	if (num >= 16)
+	if ((num == 0) && (dota))
 	{
-		ft_hex_count(num / 16, count);
+		*count = 0;
+		return ;
+	}
+	if (num == 0)
+	{
+		*count = 1;
+		return ;
+	}
+	if (num < 0)
+		*count += 1;
+	while (num / 16)
+	{
+		num = num / 16;
 		*count += 1;
 	}
-	else
+	if (num % 16)
 		*count += 1;
+	return ;
 }
 
-static void		ft_put_hex(unsigned int num)
+static void		ft_put_hex(unsigned int num, int dota)
 {
+	if ((num == 0) && (dota))
+		return ;
 	if (num >= 16)
 	{
-		ft_put_hex(num / 16);
+		ft_put_hex(num / 16, dota);
 		if ((num % 16) < 10)
 			ft_putchar_fd(num % 16 + '0', 1);
 		else
@@ -50,7 +65,7 @@ static void		ft_phwp(t_save *data, long long hex, int hex_len, int *len)
 		hex_len++;
 		*len += 1;
 	}
-	ft_put_hex(hex);
+	ft_put_hex(hex, data->dota);
 }
 
 int				ft_ux_type(t_save *data, va_list ap)
@@ -61,7 +76,7 @@ int				ft_ux_type(t_save *data, va_list ap)
 
 	hex_len = 0;
 	hex = va_arg(ap, long long);
-	ft_hex_count(hex, &hex_len);
+	ft_hex_count(hex, &hex_len, data->dota);
 	len = hex_len;
 	if (data->width != 0)
 	{

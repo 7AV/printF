@@ -6,32 +6,47 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:29 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 15:29:47 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 20:29:03 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_putnbr_longlong(long long num)
+static void		ft_putnbr_longlong(long long num, int dota)
 {
+	if ((num == 0) && (dota))
+		return ;
 	if (num >= 10)
 	{
-		ft_putnbr_longlong(num / 10);
+		ft_putnbr_longlong(num / 10, dota);
 		ft_putchar_fd(num % 10 + '0', 1);
 	}
 	else
 		ft_putchar_fd(num + '0', 1);
 }
 
-static void		ft_unsign_count(unsigned int num, int *count)
+static void		ft_unsign_count(unsigned int num, int *count, int dota)
 {
-	if (num >= 10)
+	if ((num == 0) && (dota))
 	{
-		ft_unsign_count(num / 10, count);
+		*count = 0;
+		return ;
+	}
+	if (num == 0)
+	{
+		*count = 1;
+		return ;
+	}
+	if (num < 0)
+		*count += 1;
+	while (num / 10)
+	{
+		num = num / 10;
 		*count += 1;
 	}
-	else
+	if (num % 10)
 		*count += 1;
+	return ;
 }
 
 static void		ft_puwp(t_save *data, long long uns, int uns_len, int *len)
@@ -42,7 +57,7 @@ static void		ft_puwp(t_save *data, long long uns, int uns_len, int *len)
 		uns_len++;
 		*len += 1;
 	}
-	ft_putnbr_longlong(uns);
+	ft_putnbr_longlong(uns, data->dota);
 }
 
 int				ft_u_type(t_save *data, va_list ap)
@@ -53,7 +68,7 @@ int				ft_u_type(t_save *data, va_list ap)
 
 	uns_len = 0;
 	uns = va_arg(ap, unsigned int);
-	ft_unsign_count(uns, &uns_len);
+	ft_unsign_count(uns, &uns_len, data->dota);
 	len = uns_len;
 	if (data->width != 0)
 	{

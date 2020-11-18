@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:12:30 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:14:38 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 17:44:04 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,16 @@ static void		ft_pnwp(t_save *data, int num, int num_len, int *len)
 	ft_putnbr(num);
 }
 
-static void		ft_negative_num(int num, t_save *data)
+static void		ft_negative_num(long long *num, int num_len, t_save *data)
 {
-	if ((num < 0) && (data->precision != 0))
+	if ((*num < 0) && (data->precision != 0))
 		data->precision += 1;
+	if ((*num < 0) && (data->width > num_len) && (data->flags == 1) &&
+	(data->precision == 0))
+	{
+		ft_putchar_fd('-', 1);
+		*num = *num * (-1);
+	}
 }
 
 int				ft_di_type(t_save *data, va_list ap)
@@ -72,7 +78,7 @@ int				ft_di_type(t_save *data, va_list ap)
 	num_len = 0;
 	num = va_arg(ap, int);
 	ft_num_count(num, &num_len);
-	ft_negative_num(num, data);
+	ft_negative_num(&num, num_len, data);
 	len = num_len;
 	if (data->width != 0)
 	{
@@ -80,7 +86,10 @@ int				ft_di_type(t_save *data, va_list ap)
 			ft_pnwp(data, num, num_len, &len);
 		while ((data->width > data->precision) && (data->width > num_len))
 		{
-			ft_putchar_fd(' ', 1);
+			if ((data->precision == 0) && (data->flags == 1))
+				ft_putchar_fd('0', 1);
+			else
+				ft_putchar_fd(' ', 1);
 			data->width -= 1;
 			len++;
 		}

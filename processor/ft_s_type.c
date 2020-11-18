@@ -6,39 +6,41 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:16 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 21:01:52 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 15:14:09 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int		ft_space_count(char *str, int len)
+static int		ft_will_put(char *str, int prc)
 {
 	int			i;
-
+	int			str_len;
+	
 	i = 0;
-	if (len != 0)
-		while (len > i)
+	str_len = ft_strlen(str);
+	if (prc != 0)
+		while ((i < prc) && (i < str_len))
 			i++;
-	if (len == 0)
+	if (prc == 0)
 		i = ft_strlen(str);
 	return (i);
 }
 
-static int		ft_put_s_with_prc(char *str, int len)
+static int		ft_put_s_with_prc(char *str, int prc)
 {
 	int			i;
 	int			str_len;
 
-	str_len = ft_strlen(str);
 	i = 0;
-	if (len != 0)
-		while ((i < len) && (i < str_len))
+	str_len = ft_strlen(str);
+	if (prc > 0)
+		while ((i < prc) && (i < str_len))
 		{
 			ft_putchar_fd(str[i], 1);
 			i++;
 		}
-	if (len == 0)
+	else if (prc == 0)
 	{
 		while (str[i])
 		{
@@ -47,6 +49,8 @@ static int		ft_put_s_with_prc(char *str, int len)
 		}
 		i = ft_strlen(str);
 	}
+	// else
+	// 	ft_putchar_fd("", 1);
 	return (i);
 }
 
@@ -54,19 +58,21 @@ int				ft_s_type(t_save *data, va_list ap)
 {
 	char		*output;
 	int			len;
-	int			space_count;
+	int			will_put;
 
 	len = 0;
 	output = va_arg(ap, char*);
-	space_count = ft_space_count(output, data->precision);
+	if (output == NULL)
+		output = "(null)";
+	will_put = ft_will_put(output, data->precision);
 	if (data->width != 0)
 	{
 		if (data->flags == 2)
 			len += ft_put_s_with_prc(output, data->precision);
-		while (data->width > space_count)
+		while (data->width > will_put)
 		{
 			ft_putchar_fd(' ', 1);
-			space_count++;
+			will_put++;
 			len++;
 		}
 		if (data->flags != 2)

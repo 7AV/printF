@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uX_type.c                                       :+:      :+:    :+:   */
+/*   ft_ux_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:48 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:18:06 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 17:03:18 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,12 @@ int				ft_ux_type(t_save *data, va_list ap)
 	{
 		if (data->flags == 2)
 			ft_phwp(data, hex, hex_len, &len);
-		while (data->width > data->precision)
+		while ((data->width > data->precision) && (data->width > hex_len))
 		{
-			ft_putchar_fd(' ', 1);
+			if ((data->precision == 0) && (data->flags == 1))
+				ft_putchar_fd('0', 1);
+			else
+				ft_putchar_fd(' ', 1);
 			data->width -= 1;
 			len++;
 		}

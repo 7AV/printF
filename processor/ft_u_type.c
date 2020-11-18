@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:29 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 20:29:03 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:37:04 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,23 @@ static void		ft_puwp(t_save *data, long long uns, int uns_len, int *len)
 	ft_putnbr_longlong(uns, data->dota);
 }
 
+static void		ft_put_all(t_save *data, long long *uns, int *uns_len, int *len)
+{
+	if (data->flags == 2)
+		ft_puwp(data, *uns, *uns_len, len);
+	while ((data->width > data->precision) && (data->width > *uns_len))
+	{
+		if ((data->precision == 0) && (data->flags == 1))
+			ft_putchar_fd('0', 1);
+		else
+			ft_putchar_fd(' ', 1);
+		data->width -= 1;
+		*len += 1;
+	}
+	if (data->flags != 2)
+		ft_puwp(data, *uns, *uns_len, len);
+}
+
 int				ft_u_type(t_save *data, va_list ap)
 {
 	long long	uns;
@@ -71,21 +88,7 @@ int				ft_u_type(t_save *data, va_list ap)
 	ft_unsign_count(uns, &uns_len, data->dota);
 	len = uns_len;
 	if (data->width != 0)
-	{
-		if (data->flags == 2)
-			ft_puwp(data, uns, uns_len, &len);
-		while ((data->width > data->precision) && (data->width > uns_len))
-		{
-			if ((data->precision == 0) && (data->flags == 1))
-				ft_putchar_fd('0', 1);
-			else
-				ft_putchar_fd(' ', 1);
-			data->width -= 1;
-			len++;
-		}
-		if (data->flags != 2)
-			ft_puwp(data, uns, uns_len, &len);
-	}
+		ft_put_all(data, &uns, &uns_len, &len);
 	else
 		ft_puwp(data, uns, uns_len, &len);
 	return (len);

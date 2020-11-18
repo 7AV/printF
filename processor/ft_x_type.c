@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:39 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 21:13:26 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:32:21 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,23 @@ static void		ft_phwp(t_save *data, long long hex, int hex_len, int *len)
 	ft_put_hex(hex, data->dota);
 }
 
+static void		ft_put_all(t_save *data, long long *hex, int *hex_len, int *len)
+{
+	if (data->flags == 2)
+		ft_phwp(data, *hex, *hex_len, len);
+	while ((data->width > data->precision) && (data->width > *hex_len))
+	{
+		if ((data->precision == 0) && (data->flags == 1))
+			ft_putchar_fd('0', 1);
+		else
+			ft_putchar_fd(' ', 1);
+		data->width -= 1;
+		*len += 1;
+	}
+	if (data->flags != 2)
+		ft_phwp(data, *hex, *hex_len, len);
+}
+
 int				ft_x_type(t_save *data, va_list ap)
 {
 	long long	hex;
@@ -79,21 +96,7 @@ int				ft_x_type(t_save *data, va_list ap)
 	ft_hex_count(hex, &hex_len, data->dota);
 	len = hex_len;
 	if (data->width != 0)
-	{
-		if (data->flags == 2)
-			ft_phwp(data, hex, hex_len, &len);
-		while ((data->width > data->precision) && (data->width > hex_len))
-		{
-			if ((data->precision == 0) && (data->flags == 1))
-				ft_putchar_fd('0', 1);
-			else
-				ft_putchar_fd(' ', 1);
-			data->width -= 1;
-			len++;
-		}
-		if (data->flags != 2)
-			ft_phwp(data, hex, hex_len, &len);
-	}
+		ft_put_all(data, &hex, &hex_len, &len);
 	else
 		ft_phwp(data, hex, hex_len, &len);
 	return (len);

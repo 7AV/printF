@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:05:56 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:32:45 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 11:46:20 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_node
 	int			lenght;
 }				t_save;
 
+int				ft_percent_type(t_save *data);
 int				ft_ux_type(t_save *data, va_list ap);
 int				ft_x_type(t_save *data, va_list ap);
 int				ft_u_type(t_save *data, va_list ap);

@@ -6,11 +6,22 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:07:05 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:26:29 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 12:26:04 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+static void		ft_pointer_count(long long num, int *count)
+{
+	if (num >= 16)
+	{
+		ft_pointer_count(num / 16, count);
+		*count += 1;
+	}
+	else
+		*count += 1;
+}
 
 static void		ft_put_pointer(long long num)
 {
@@ -40,23 +51,24 @@ static void		ft_put_full_pointer(long long ptr)
 int				ft_p_type(t_save *data, va_list ap)
 {
 	long long	ptr;
-	int			space_count;
+	int			ptr_count;
 
 	ptr = va_arg(ap, long long);
-	space_count = 11;
+	ptr_count = 2;
+	ft_pointer_count(ptr, &ptr_count);
 	if (data->width != 0)
 	{
 		if (data->flags == 2)
 			ft_put_full_pointer(ptr);
-		while (data->width > space_count)
+		while (data->width > ptr_count)
 		{
 			ft_putchar_fd(' ', 1);
-			space_count++;
+			ptr_count++;
 		}
 		if (data->flags != 2)
 			ft_put_full_pointer(ptr);
 	}
 	else
 		ft_put_full_pointer(ptr);
-	return (space_count);
+	return (ptr_count);
 }

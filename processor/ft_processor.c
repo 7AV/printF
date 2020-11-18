@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:03:42 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:18:32 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/18 11:46:31 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int				ft_processor(t_save *data, va_list ap)
 		len = ft_s_type(data, ap);
 	else if (data->type == 7)
 		len = ft_p_type(data, ap);
+	else if (data->type == 8)
+		len = ft_percent_type(data);
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:29:32 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 21:06:28 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/19 09:01:42 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int				ft_parser(char *line, int *ptr, va_list ap)
 	tmp = line;
 	line_len = 1;
 	if (!(data = (t_save *)malloc(sizeof(t_save))))
+	{
+		*ptr = -1;
 		return (-1);
+	}
 	ft_data_set(data);
 	line_len += ft_flag_parse(line + 1, &(data->flags), ptr);
 	line_len += ft_width_parse(line + line_len, data, ptr, ap);

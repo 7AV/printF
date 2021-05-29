@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:29:32 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/19 09:01:42 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/20 20:40:50 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void		ft_data_set(t_save *data)
 	data->precision = 0;
 	data->type = 0;
 	data->dota = 0;
+	data->dota2 = 0;
 }
 
 int				ft_parser(char *line, int *ptr, va_list ap)

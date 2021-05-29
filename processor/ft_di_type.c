@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 13:12:30 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/19 08:58:06 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/20 17:39:33 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		ft_pnwp(t_save *data, int num, int num_len, int *len)
 		ft_putnbr_fd(num, 1);
 }
 
-static void		ft_negative_num(long long *num, int num_len, t_save *data)
+static void		ft_negative_num(int *num, int num_len, t_save *data)
 {
 	if ((*num < 0) && (data->precision != 0))
 		data->precision += 1;
@@ -70,7 +70,7 @@ static void		ft_negative_num(long long *num, int num_len, t_save *data)
 	}
 }
 
-static void		ft_put_all(t_save *data, long long *num, int *num_len, int *len)
+static void		ft_put_all(t_save *data, int *num, int *num_len, int *len)
 {
 	if (data->flags == 2)
 		ft_pnwp(data, *num, *num_len, len);
@@ -89,7 +89,7 @@ static void		ft_put_all(t_save *data, long long *num, int *num_len, int *len)
 
 int				ft_di_type(t_save *data, va_list ap)
 {
-	long long	num;
+	int			num;
 	int			num_len;
 	int			len;
 

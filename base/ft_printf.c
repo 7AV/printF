@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 10:45:04 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/17 19:58:07 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/19 15:59:20 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int				ft_putline(char **line, int *output_len)
 {
+	char		*tmp;
+
+	tmp = *line;
 	while ((**line != '%'))
 	{
 		ft_putchar_fd(**line, 1);
@@ -41,10 +44,7 @@ int				ft_printf(const char *fmt, ...)
 	while (*line)
 	{
 		if (!(ft_putline(&line, &output_len)))
-		{
-			va_end(ap);
-			return (output_len);
-		}
+			break ;
 		if ((len = ft_parser(line, &output_len, ap)) == -1)
 			break ;
 		line += len;

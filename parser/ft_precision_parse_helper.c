@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_precision_parse_helper.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/15 13:21:51 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/19 08:53:54 by sbudding         ###   ########.fr       */
+/*   Created: 2020/11/20 22:15:00 by sbudding          #+#    #+#             */
+/*   Updated: 2020/11/20 22:16:02 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "../includes/ft_printf.h"
 
-int main (void)
+int			ft_atoi_mod(const char *str, int *num)
 {
-		int *a;
-		int b;
-		b = 0;
-		a = &b;
-		// ft_puthex_fd(123456789, 1);
-	// printf("%d", ft_printf("%*.d 123 %d %d",2, -4221, 2, 1));
-	printf(" (%d)", ft_printf("%d", INT_MIN));
-	// printf("\n");
-	// printf("%d", printf("%.*d 123 %d %d",2,  -4221, 2, 1));
-	printf(" (%d)", printf("%d", INT_MIN));
+	int		count;
+
+	count = 0;
+	while (ft_isdigit(*str))
+	{
+		count++;
+		*num = *num * 10 + (*str - '0');
+		str++;
+	}
+	return (count);
 }

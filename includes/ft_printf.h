@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 12:05:56 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 21:03:42 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/21 17:12:40 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_node
 	int			precision;
 	int			type;
 	int			dota;
+	int			dota2;
 }				t_save;
 
 int				ft_percent_type(t_save *data);
@@ -35,7 +36,9 @@ int				ft_di_type(t_save *data, va_list ap);
 int				ft_c_type(t_save *data, va_list ap);
 int				ft_processor(t_save *data, va_list ap);
 int				ft_type_parse(char *line, int *type);
-int				ft_precision_parse(char *line, t_save *data, int *ptr, va_list ap);
+int				ft_atoi_mod(const char *str, int *num);
+int				ft_precision_parse(char *line, t_save *data, int *ptr,
+va_list ap);
 int				ft_width_parse(char *line, t_save *data, int *ptr, va_list ap);
 void			ft_double_trouble(char **line, int *flag_len, int *ptr);
 int				ft_flag_parse(char *line, int *flags, int *ptr);

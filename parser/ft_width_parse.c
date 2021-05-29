@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 18:43:49 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 21:11:22 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/20 11:13:29 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int			ft_width_parse(char *line, t_save *data, int *ptr, va_list ap)
 		line++;
 		ft_double_trouble(&line, &width_len, ptr);
 	}
-	tmp[width_len] = '\0';
 	data->width = ft_atoi(tmp);
 	free(tmp);
 	return (width_len);

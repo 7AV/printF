@@ -6,7 +6,7 @@
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 11:26:19 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 17:02:53 by sbudding         ###   ########.fr       */
+/*   Updated: 2020/11/20 22:08:15 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		ft_ppwp(t_save *data, int perc, int perc_len, int *len)
 {
-	while (data->precision > perc_len)
+	while ((data->flags == 1) && (data->width > perc_len))
 	{
 		ft_putchar_fd('0', 1);
 		perc_len++;
@@ -34,9 +34,9 @@ int				ft_percent_type(t_save *data)
 	{
 		if (data->flags == 2)
 			ft_ppwp(data, '%', perc_len, &len);
-		while ((data->width > data->precision) && (data->width > perc_len))
+		while (data->width > perc_len)
 		{
-			if ((data->precision == 0) && (data->flags == 1))
+			if ((data->flags == 1) || (data->dota2 == 1))
 				ft_putchar_fd('0', 1);
 			else
 				ft_putchar_fd(' ', 1);

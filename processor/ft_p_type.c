@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbudding <sbudding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/16 16:07:05 by sbudding          #+#    #+#             */
-/*   Updated: 2020/11/18 12:26:04 by sbudding         ###   ########.fr       */
+/*   Created: 2020/11/19 10:17:15 by sbudding          #+#    #+#             */
+/*   Updated: 2020/11/20 22:08:30 by sbudding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,50 @@ static void		ft_put_pointer(long long num)
 	}
 }
 
-static void		ft_put_full_pointer(long long ptr)
+static void		ft_put_full_pointer(long long ptr, t_save *data, int *counter)
 {
+	long long	*ptr_ptr;
+
+	ptr_ptr = &ptr;
 	ft_putstr_fd("0x", 1);
-	ft_put_pointer(ptr);
+	if ((data->dota) && (ptr == 0) && (data->precision == 0))
+		*counter -= 1;
+	else if (!((data->dota) && (data->width == 0) && (ptr == 0)))
+		ft_put_pointer(ptr);
+	else
+		*counter -= 1;
+}
+
+static void		ft_put_all(t_save *data, long long *ptr, int *ptr_len)
+{
+	if (data->flags == 2)
+		ft_put_full_pointer(*ptr, data, ptr_len);
+	while (data->width > *ptr_len)
+	{
+		ft_putchar_fd(' ', 1);
+		*ptr_len += 1;
+	}
+	if ((data->dota) && (*ptr == 0) && (data->precision == 0) &&
+	(data->flags != 2) && (data->width > 2))
+	{
+		ft_putchar_fd(' ', 1);
+		*ptr_len += 1;
+	}
+	if (data->flags != 2)
+		ft_put_full_pointer(*ptr, data, ptr_len);
 }
 
 int				ft_p_type(t_save *data, va_list ap)
 {
 	long long	ptr;
-	int			ptr_count;
+	int			ptr_len;
 
 	ptr = va_arg(ap, long long);
-	ptr_count = 2;
-	ft_pointer_count(ptr, &ptr_count);
+	ptr_len = 2;
+	ft_pointer_count(ptr, &ptr_len);
 	if (data->width != 0)
-	{
-		if (data->flags == 2)
-			ft_put_full_pointer(ptr);
-		while (data->width > ptr_count)
-		{
-			ft_putchar_fd(' ', 1);
-			ptr_count++;
-		}
-		if (data->flags != 2)
-			ft_put_full_pointer(ptr);
-	}
+		ft_put_all(data, &ptr, &ptr_len);
 	else
-		ft_put_full_pointer(ptr);
-	return (ptr_count);
+		ft_put_full_pointer(ptr, data, &ptr_len);
+	return (ptr_len);
 }
